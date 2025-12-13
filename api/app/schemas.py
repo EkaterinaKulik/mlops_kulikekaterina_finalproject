@@ -4,6 +4,12 @@ from uuid import UUID
 
 class WorkoutIn(BaseModel):
     user_id: str
+
+    gender: str  
+    age: int = Field(ge=0, le=120)
+    height_cm: float = Field(gt=0)
+    weight_kg: float = Field(gt=0)
+
     ts: datetime
     duration_min: float = Field(gt=0)
     distance_km: float = Field(gt=0)
