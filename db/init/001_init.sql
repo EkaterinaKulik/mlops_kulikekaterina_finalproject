@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS users (
   user_id TEXT PRIMARY KEY,
   age INT,
   sex TEXT,
+  height_cm DOUBLE PRECISION,
   weight_kg DOUBLE PRECISION,
   created_at TIMESTAMP DEFAULT NOW()
 );
