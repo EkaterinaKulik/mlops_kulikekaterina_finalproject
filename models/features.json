@@ -1,0 +1,16 @@
+{
+  "model_version": "catboost-v1-20251213-104748",
+  "feature_cols": [
+    "Gender",
+    "Age",
+    "Height(cm)",
+    "Weight(kg)",
+    "Running Time(min)",
+    "Running Speed(km/h)",
+    "Distance(km)",
+    "Average Heart Rate"
+  ],
+  "cat_cols": [
+    "Gender"
+  ]
+}
