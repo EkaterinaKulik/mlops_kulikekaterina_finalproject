@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   db:
     image: postgres:16
@@ -68,7 +70,7 @@ services:
       - api
 
   airflow:
-    image: apache/airflow:2.9.3
+    build: ./airflow
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: ${DATABASE_URL}
