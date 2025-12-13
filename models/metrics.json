@@ -1,0 +1,11 @@
+{
+  "model_version": "catboost-v1-20251213-104748",
+  "target": "Calories Burned",
+  "n_rows_total": 200,
+  "n_train": 160,
+  "n_val": 40,
+  "mae": 176.88025302362865,
+  "rmse": 203.69130502291407,
+  "random_state": 42,
+  "test_size": 0.2
+}
