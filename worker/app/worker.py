@@ -2,8 +2,8 @@ import json
 from datetime import datetime
 import pika
 from sqlalchemy import text
-from .settings import settings
-from .db import get_db
+from app.settings import settings
+from app.db import get_db
 
 def stub_predict(distance_km: float, duration_min: float, avg_hr: float | None) -> float:
     base = 80.0 * distance_km
