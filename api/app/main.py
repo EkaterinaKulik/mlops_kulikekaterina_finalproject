@@ -19,14 +19,24 @@ def create_workout(payload: WorkoutIn, db: Session = Depends(get_db)):
     workout_id = uuid.uuid4()
     prediction_id = uuid.uuid4()
 
-    # upsert user
-    db.execute(
-        text("""
-            INSERT INTO users(user_id) VALUES (:user_id)
-            ON CONFLICT (user_id) DO NOTHING
-        """),
-        {"user_id": payload.user_id},
-    )
+     db.execute(
+    text("""
+        INSERT INTO users(user_id, age, sex, height_cm, weight_kg)
+        VALUES (:user_id, :age, :sex, :height_cm, :weight_kg)
+        ON CONFLICT (user_id) DO UPDATE SET
+            age = EXCLUDED.age,
+            sex = EXCLUDED.sex,
+            height_cm = EXCLUDED.height_cm,
+            weight_kg = EXCLUDED.weight_kg
+    """),
+    {
+        "user_id": payload.user_id,
+        "age": payload.age,
+        "sex": payload.gender,
+        "height_cm": payload.height_cm,
+        "weight_kg": payload.weight_kg,
+    },
+)
 
     db.execute(
         text("""
