@@ -78,7 +78,7 @@ def get_prediction(workout_id: uuid.UUID, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="prediction not found")
 
     return {
-        "workout_id": uuid.UUID(row["workout_id"]),
+        "workout_id": uuid.UUID(str(row["workout_id"])),
         "status": row["status"],
         "calories_pred": row["calories_pred"],
         "model_version": row["model_version"],
