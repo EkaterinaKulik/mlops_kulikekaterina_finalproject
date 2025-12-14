@@ -47,7 +47,6 @@ def create_workout(payload: WorkoutIn, db: Session = Depends(get_db)):
         },
     )
 
-    # Create workout
     db.execute(
         text(
             """
