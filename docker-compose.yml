@@ -70,12 +70,11 @@ services:
       - api
 
   airflow:
-    image: apache/airflow:2.9.3
+    build: ./airflow
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: ${AIRFLOW_DB_URL}
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      _PIP_ADDITIONAL_REQUIREMENTS: "apache-airflow-providers-postgres==5.13.1 psycopg2-binary==2.9.9"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
     ports:
