@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: "FitBurn Dashboards"
+    orgId: 1
+    folder: "FitBurn"
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards
