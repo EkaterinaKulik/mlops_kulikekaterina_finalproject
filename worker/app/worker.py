@@ -13,7 +13,6 @@ MODEL, FEATURE_COLS, CAT_COLS, MODEL_VERSION_FROM_FILE = load_model_and_features
 
 
 def _normalize_gender(value: str) -> str:
-    # Normalize to "Male"/"Female" like in training
     v = (value or "").strip().title()
     if v in {"M", "Man", "Male"}:
         return "Male"
@@ -38,7 +37,6 @@ def process_message(ch, method, properties, body: bytes):
 
     db = get_db()
     try:
-        # Join workouts + users to get full feature set (must match training)
         w = db.execute(
             text(
                 """
@@ -81,7 +79,6 @@ def process_message(ch, method, properties, body: bytes):
             ch.basic_ack(delivery_tag=method.delivery_tag)
             return
 
-        # Build a single-row feature dict EXACTLY as in Kaggle dataset columns
         row_features = {
             "Gender": _normalize_gender(str(w["sex"])),
             "Age": _safe_float(w["age"]),
@@ -93,7 +90,6 @@ def process_message(ch, method, properties, body: bytes):
             "Average Heart Rate": _safe_float(w["avg_hr"]),
         }
 
-        # Respect the exact feature order from features.json
         X = pd.DataFrame([[row_features[c] for c in FEATURE_COLS]], columns=FEATURE_COLS)
 
         pred = MODEL.predict(X)
