@@ -1,0 +1,16 @@
+apiVersion: 1
+
+datasources:
+  - name: FitBurn Postgres
+    uid: fitburn-postgres
+    type: postgres
+    access: proxy
+    isDefault: true
+    url: db:5432
+    database: fitburn
+    user: fitburn
+    secureJsonData:
+      password: fitburn
+    jsonData:
+      sslmode: disable
+      postgresVersion: 1600
