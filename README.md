@@ -1,6 +1,8 @@
 # FitBurn Rewards
 MLOps system for fitness engagement and monitoring
 
+Выполнили: Кулик Екатерина (я делала одна)
+
 ## Business Value
 FitBurn Rewards — это ML-сервис для фитнес-клубов и спортивных платформ, направленный на повышение вовлечённости и удержания пользователей.
 
